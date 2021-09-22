@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SignUpForm</string>
+    <string name="prompt">Sign Up Now!</string>
+    <string name="emailHint"> Email Address</string>
 </resources>
