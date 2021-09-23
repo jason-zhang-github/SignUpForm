@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity()
         val address = findViewById<EditText>(R.id.editTextTextEmailAddress)
         val firstPass = findViewById<EditText>(R.id.editTextTextPassword)
         val confirmPass = findViewById<EditText>(R.id.editTextTextPassword2)
+        val user = findViewById<EditText>(R.id.editTextTextEmailAddress2)
 
         // Create save button
         val btn = findViewById<Button>(R.id.button)
@@ -37,18 +38,23 @@ class MainActivity : AppCompatActivity()
                 val savePW = firstPass.text.toString()
                 val confirmPW = confirmPass.text.toString()
 
+                val emailEmpty = saveEmail.isEmpty()
+                val passEmpty = savePW.isEmpty()
+                val confirmEmpty = confirmPW.isEmpty()
+
+
                 // if any EditText is empty, set an error message for each respective EditText
-                if (saveEmail.isEmpty())
+                if (emailEmpty)
                 {
                     address.setError("No email address provided")
                 }
 
-                if (savePW.isEmpty())
+                if (passEmpty)
                 {
                     firstPass.setError("No password provided")
                 }
 
-                if (confirmPW.isEmpty())
+                if (confirmEmpty)
                 {
                     confirmPass.setError("Please confirm password")
                 }
@@ -58,8 +64,22 @@ class MainActivity : AppCompatActivity()
 
                 if (savePW != confirmPW)
                 {
+                    if (!passEmpty)
+                    {
+                        firstPass.setError("Passwords do not match")
+                    }
 
+                    if (!confirmEmpty)
+                    {
+                        confirmPass.setError("Passwords do not match")
+                    }
+                    // Toast.makeText(this@MainActivity, "Passwords do not match", Toast.LENGTH_LONG).show()
+                    //Log.d("Message", "Passwords do not match")
                 }
+
+                // If everything good
+
+
             }
         }
 
