@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity()
         val address = findViewById<EditText>(R.id.editTextTextEmailAddress)
         val firstPass = findViewById<EditText>(R.id.editTextTextPassword)
         val confirmPass = findViewById<EditText>(R.id.editTextTextPassword2)
-        val user = findViewById<EditText>(R.id.editTextTextEmailAddress2)
+        val user = findViewById<EditText>(R.id.editTextTextPersonName)
 
         // Create save button
         val btn = findViewById<Button>(R.id.button)
@@ -37,13 +37,22 @@ class MainActivity : AppCompatActivity()
                 val saveEmail = address.text.toString()
                 val savePW = firstPass.text.toString()
                 val confirmPW = confirmPass.text.toString()
+                val username = user.text.toString()
 
+                // Boolean values for if statements
                 val emailEmpty = saveEmail.isEmpty()
                 val passEmpty = savePW.isEmpty()
                 val confirmEmpty = confirmPW.isEmpty()
+                val userEmpty = username.isEmpty()
+                val samePass = (savePW == confirmPW)
 
 
                 // if any EditText is empty, set an error message for each respective EditText
+                if (userEmpty)
+                {
+                    user.setError("No username provided")
+                }
+
                 if (emailEmpty)
                 {
                     address.setError("No email address provided")
@@ -62,7 +71,7 @@ class MainActivity : AppCompatActivity()
                 // If Password and Confirm Password fields do not match, set error for both
                 // if (!savePW.equals(confirmPW))
 
-                if (savePW != confirmPW)
+                if (!samePass)
                 {
                     if (!passEmpty)
                     {
@@ -73,13 +82,17 @@ class MainActivity : AppCompatActivity()
                     {
                         confirmPass.setError("Passwords do not match")
                     }
-                    // Toast.makeText(this@MainActivity, "Passwords do not match", Toast.LENGTH_LONG).show()
-                    //Log.d("Message", "Passwords do not match")
+
                 }
 
-                // If everything good
+                // If everything good, welcome message
 
-
+                if (!userEmpty && !emailEmpty && !passEmpty && !confirmEmpty && samePass)
+                {
+                    val welcome = "Welcome " + username + " to the SignUpFormApp"
+                    Toast.makeText(this@MainActivity, welcome, Toast.LENGTH_LONG).show()
+                    Log.d("Message", "All good")
+                }
             }
         }
 
