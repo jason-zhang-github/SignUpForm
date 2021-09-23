@@ -33,6 +33,13 @@ class MainActivity : AppCompatActivity()
                 // Toast.makeText(this@MainActivity, "You clicked the button", Toast.LENGTH_LONG).show()
                 // Log.d("Message", "You clicked the button")
 
+                // Reset all errors
+
+                address.setError(null)
+                firstPass.setError(null)
+                confirmPass.setError(null)
+                user.setError(null)
+
                 // Create strings to hold the user input
                 val saveEmail = address.text.toString()
                 val savePW = firstPass.text.toString()

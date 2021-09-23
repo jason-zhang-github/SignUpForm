@@ -11,6 +11,7 @@ message, displaying a welcome message that includes the username.
 Attached are some screenshots of the application in the initial state, no error state, and one permutation
 of errors.
 
+
 ![screenshot1](https://github.com/jason-zhang-github/SignUpForm/blob/master/android_screenshot_1.jpg)
 
 ![screenshot2](https://github.com/jason-zhang-github/SignUpForm/blob/master/android_screenshot_2.jpg)
