@@ -16,30 +16,54 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Create objects to represent the EditTexts
         val address = findViewById<EditText>(R.id.editTextTextEmailAddress)
-        // val saveEmail = address.text.toString()
-
         val firstPass = findViewById<EditText>(R.id.editTextTextPassword)
-        val savePW = firstPass.text.toString()
-
         val confirmPass = findViewById<EditText>(R.id.editTextTextPassword2)
-        val confirmPW = confirmPass.text.toString()
 
+        // Create save button
         val btn = findViewById<Button>(R.id.button)
 
+        //define OnClickListener
         val ocl = object : View.OnClickListener
         {
             override fun onClick(v: View?)
             {
-                Toast.makeText(this@MainActivity, "You clicked the button", Toast.LENGTH_LONG).show()
-                Log.d("Message", "You clicked the button")
+                // Toast.makeText(this@MainActivity, "You clicked the button", Toast.LENGTH_LONG).show()
+                // Log.d("Message", "You clicked the button")
 
+                // Create strings to hold the user input
                 val saveEmail = address.text.toString()
+                val savePW = firstPass.text.toString()
+                val confirmPW = confirmPass.text.toString()
 
+                // if any EditText is empty, set an error message for each respective EditText
+                if (saveEmail.isEmpty())
+                {
+                    address.setError("No email address provided")
+                }
+
+                if (savePW.isEmpty())
+                {
+                    firstPass.setError("No password provided")
+                }
+
+                if (confirmPW.isEmpty())
+                {
+                    confirmPass.setError("Please confirm password")
+                }
+
+                // If Password and Confirm Password fields do not match, set error for both
+                // if (!savePW.equals(confirmPW))
+
+                if (savePW != confirmPW)
+                {
+
+                }
             }
         }
 
-        btn.setOnClickListener(ocl)
+        btn.setOnClickListener(ocl) // assign OCL
 
 
     }
